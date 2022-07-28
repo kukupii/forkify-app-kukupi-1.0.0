@@ -78,9 +78,10 @@ export const getSearchResultPage = function (page = state.search.page) {
 export const changeServings = function (newServing) {
   state.recipe.ingredients.forEach(ing => {
     if (!ing.quantity) return;
-    ing.quantity = Math.round(
-      (ing.quantity * newServing) / state.recipe.servings
-    ); // 1 * 8
+    ing.quantity = (
+      (ing.quantity * newServing) /
+      state.recipe.servings
+    ).toFixed(2); // 1 * 8
   });
   state.recipe.servings = newServing;
 };
